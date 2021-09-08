@@ -145,15 +145,21 @@ int main () {
                     contaVertices++;
 
                 }
-                printf("O Menor caminho eh: %d ", chegada);
-                printf("A Distancia eh: %d\n", dist[chegada]);
-                
-                do {
-                    chegada = anterior[chegada];
-                    printf("%d ", chegada);
-                } while (chegada != inicio);
 
-                printf("\n");
+                if(dist[chegada] == infinito) {
+                    printf("Não existe caminho possivel\n");
+                }
+                else {
+                    printf("O Menor caminho eh: %d ", chegada);
+                    printf("A Distancia eh: %d\n", dist[chegada]);
+                    
+                    do {
+                        chegada = anterior[chegada];
+                        printf("%d ", chegada);
+                    } while (chegada != inicio);
+
+                    printf("\n");
+                }
 
             break;
 
