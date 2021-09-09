@@ -4,7 +4,7 @@
 int main () {
 
     int sel = 0, aresta1 = 0, aresta2 = 0, peso = 0, tamanho = 0, flag = 0, i, j, inicio, chegada;
-    int infinito = 2147483647;
+    int infinito = 2147483647/2;
 
     printf("Escolha o numero de vertices de 1 a 20: ");
     do {
@@ -69,7 +69,7 @@ int main () {
                     break;
                 }
 
-                printf("Insira o peso para esta nova aresta.");
+                printf("Insira o peso para esta nova aresta.\n");
                 scanf("%d", &peso);
 
                 grafo[aresta1-1][aresta2-1] = peso;
@@ -101,12 +101,15 @@ int main () {
 
             case 3:
                 
-                printf("Escolha o vertice de partida: \n");
+                printf("Escolha o numero do vertice de partida: \n");
                 scanf("%d", &inicio);
                 getchar();
-                printf("Escolha o vertice de chegada: \n");
+                printf("Escolha o numero do vertice de chegada: \n");
                 scanf("%d", &chegada);
                 getchar();
+
+                inicio = inicio - 1;
+                chegada = chegada - 1;
 
                 menorVertice = chegada;
 
@@ -146,21 +149,20 @@ int main () {
 
                 }
 
-                if(dist[chegada] == infinito) {
-                    printf("Não existe caminho possivel\n");
+                if (dist[chegada] == infinito) {
+                    printf("Não tem caminhos validos\n");
                 }
                 else {
-                    printf("O Menor caminho eh: %d ", chegada);
                     printf("A Distancia eh: %d\n", dist[chegada]);
-                    
+                    printf("O Menor caminho eh: %d ", chegada+1);
                     do {
                         chegada = anterior[chegada];
-                        printf("%d ", chegada);
+                        printf("%d ", chegada+1);
                     } while (chegada != inicio);
 
                     printf("\n");
                 }
-
+                
             break;
 
             case 4: // Sair
